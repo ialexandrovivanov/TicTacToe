@@ -1,0 +1,51 @@
+﻿@page
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
+@model IndexModel
+
+<header id="header">
+    <partial name="_LoginPartial" />
+</header>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div id="players"></div>
+
+    <div id="invite" style="display: none">
+        <h2 id="inviteMessage" style="margin-bottom:20px;"></h2>
+        <span style="margin-left: 20px; opacity:0.7;"><button id="accept" class="btn btn-outline-success">Accept</button></span>
+        <span style="margin-left: 20px; opacity:0.7;"><button id="deny" class="btn btn-outline-danger">&nbsp;&nbsp;Deny&nbsp;&nbsp;</button></span>
+    </div>
+    <div id="vs" style="margin-top: 20px; margin: 10px auto; text-align: center;"></div>
+    <button type="button" class="btn btn-primary" id="noUsers" style="display: none; margin-top: 10px; opacity: 0.7; width:300px;">No players online</button>
+    <div id="board" style="width: 500px;height: 500px;margin: 0 auto;background-color: #34475e;color: #fff;border: 2px solid #2c3e50;border-radius: 10px;display: none;grid-template: repeat(3, 1fr) / repeat(3, 1fr);margin-top: 10px;">
+        <div style="border:2px solid #000009;border-radius: 2px;font-family: Helvetica;font-weight: bold;font-size: 4em;display: flex;justify-content: center;align-items: center;" id="1"></div>
+        <div style="border:2px solid #000009;border-radius: 2px;font-family: Helvetica;font-weight: bold;font-size: 4em;display: flex;justify-content: center;align-items: center;" id="2"></div>
+        <div style="border:2px solid #000009;border-radius: 2px;font-family: Helvetica;font-weight: bold;font-size: 4em;display: flex;justify-content: center;align-items: center;" id="3"></div>
+        <div style="border:2px solid #000009;border-radius: 2px;font-family: Helvetica;font-weight: bold;font-size: 4em;display: flex;justify-content: center;align-items: center;" id="4"></div>
+        <div style="border:2px solid #000009;border-radius: 2px;font-family: Helvetica;font-weight: bold;font-size: 4em;display: flex;justify-content: center;align-items: center;" id="5"></div>
+        <div style="border:2px solid #000009;border-radius: 2px;font-family: Helvetica;font-weight: bold;font-size: 4em;display: flex;justify-content: center;align-items: center;" id="6"></div>
+        <div style="border:2px solid #000009;border-radius: 2px;font-family: Helvetica;font-weight: bold;font-size: 4em;display: flex;justify-content: center;align-items: center;" id="7"></div>
+        <div style="border:2px solid #000009;border-radius: 2px;font-family: Helvetica;font-weight: bold;font-size: 4em;display: flex;justify-content: center;align-items: center;" id="8"></div>
+        <div style="border:2px solid #000009;border-radius: 2px;font-family: Helvetica;font-weight: bold;font-size: 4em;display: flex;justify-content: center;align-items: center;" id="9"></div>
+    </div>
+    <br />
+    <div id="turn" style="margin: 0 auto; text-align:center; display:none; color:cadetblue; margin-top:10px;"><h5>It's your turn. Click on board to play.</h5></div>
+    <div id="wait" style="margin: 0 auto; text-align:center; display:none; color:chocolate; margin-top:10px;"><h5>Wait for your opponent to play</h5></div>
+    <div id="out" style="margin: 0 auto; text-align:center; display:none; color:chocolate"><h5>Your opponent left the game</h5></div>
+    <h2 id="winner" style="display: none; margin: 0 auto; text-align:center"></h2>
+    <button id="return" class="btn btn-primary" style="display:none; margin: 0 auto; opacity:0.7; margin-top:25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+    <input id="user" type="hidden" value="@User.Identity.Name" />
+    <script type="module" src="~/js/site.js" asp-append-version="true"></script>
+}
+else
+{
+    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login"><h5>Login</h5></a>
+
+    var message = TempData["message"] as string;
+
+    <script>
+    if ('@message') { window.alert('@message'); }
+    </script>
+}
+

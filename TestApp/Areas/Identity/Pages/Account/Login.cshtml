@@ -1,0 +1,41 @@
+﻿@page
+@model LoginModel
+
+
+<div class="row">
+    <div class="col-md-4">
+        <h5 style="margin-top: 8px; margin-left:16px; margin-bottom:40px;">Login</h5>
+        <form id="account" method="post">
+
+            <div class="form-group">
+                <input asp-for="Input.UserName" class="form-control" placeholder="Username..." />
+            </div>
+            <div class="form-group">
+                <input asp-for="Input.Password" class="form-control" placeholder="Password..." />
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label asp-for="Input.RememberMe">
+                        <input asp-for="Input.RememberMe" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary" style="opacity:0.8;">Login</button>
+            </div>
+            <div class="form-group">
+                <p>
+                    <a id="forgot-password" asp-page="./ForgotPassword">Forgot password</a>
+                </p>
+                <p>
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a>
+                </p>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+    </div>
+</div>
+
+
