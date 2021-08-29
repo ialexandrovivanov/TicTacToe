@@ -19,7 +19,7 @@ namespace TestApp.Core
             using (var message = new MailMessage())
             {
                 message.To.Add(new MailAddress(email, "Dear player"));
-                message.From = new MailAddress("tictactoe@smruck.net", "Tic tac toe support team");
+                message.From = new MailAddress("ialexandrovivanov@gmail.com", "Tic tac toe support team");
                 message.Subject = subject;
                 message.Body = htmlMessage;
                 message.IsBodyHtml = true;
