@@ -382,4 +382,4 @@ setInterval(async function () {
 
     await connectionUpdate.invoke('SendMessage', currentUser + `/${occupied}`);
     await connectionUsers.invoke('SendMessage');
-}, 1000)
+}, 100)
